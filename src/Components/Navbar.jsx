@@ -14,10 +14,13 @@ import {
   Portal,
   MenuItem,
   SimpleGrid,
+ 
 } from "@chakra-ui/react";
+import Login from '../Components/Login';
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
-  // const { isOpen, onOpen, onClose } = useDisclosure()
+
 
   return (
     <>
@@ -131,10 +134,11 @@ export default function Navbar() {
             width={"400px"}
           />
         </Box>
-
+<NavLink to='/'>
         <Heading fontFamily="mono" fontSize={"43px"} letterSpacing="12px">
           SEPHORA
         </Heading>
+        </NavLink>
         <Box display={"flex"} alignItems="center" gap="15px">
           <Image
             cursor="pointer"
@@ -154,19 +158,23 @@ export default function Navbar() {
           <Box color="#d6d6d6" class="nw-header-seperator">
             |
           </Box>
-          <Box cursor="pointer" display={"flex"} alignItems="center" gap="10px">
+          <Box cursor="pointer" display={"flex"} alignItems="center" >
             <Image
               width="16px"
               height={"18px"}
               src="https://cdn-icons-png.flaticon.com/128/8763/8763326.png"
             />
-            <Text>Login</Text>
+           
+          <Login/>
+       
           </Box>
         </Box>
       </Box>
-      <Box display={"flex"} justifyContent="center" gap='80px' >
+      <Box display={"flex"} justifyContent="center" gap='80px' position='sticky' p='10px' top='0px' zIndex={'1'} backgroundColor={'white'}>
         <Box display={"flex"}>
+        <NavLink to='/sale'>
           <Text fontWeight={"bold"}>SALE</Text>
+          </NavLink>
         </Box>
         <Box>
           <Menu>

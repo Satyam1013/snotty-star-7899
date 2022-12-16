@@ -9,11 +9,13 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
+
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 import { ChevronUpIcon } from '@chakra-ui/icons'
+
 
 // Settings for the slider
 const settings = {
@@ -47,16 +49,36 @@ const your_favourite_brands = [
 ];
 
 export default function HomePage() {
-  // As we have used custom buttons, we need a reference variable to
-  // change the state
+  const [isVisible, setIsVisible] = React.useState(false);
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
+React.useEffect(() => {
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 1400) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  window.addEventListener('scroll', toggleVisibility);
+
+  return () => window.removeEventListener('scroll', toggleVisibility);
+}, []);
+ 
   const [slider, setSlider] = React.useState();
 
-  // These are the breakpoints which changes the position of the
-  // buttons as the screen size changes
+  
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
 
-  // These are the images used in the slide
+  
   const cards = [
     "https://logan.nnnow.com/content/dam/nnnow-project/12-dec-2022/se/SC_HPBanner_Desktop.jpg",
     "https://logan.nnnow.com/content/dam/nnnow-project/12-dec-2022/se/Bobbibrown_Topbanner01_desktop.jpg",
@@ -74,7 +96,7 @@ export default function HomePage() {
         width={"full"}
         overflow={"hidden"}
       >
-        {/* CSS files for react-slick */}
+       
         <link
           rel="stylesheet"
           type="text/css"
@@ -291,13 +313,14 @@ export default function HomePage() {
           </Box>
         </SimpleGrid>
       </Box>
-      <Center>
+      {isVisible ? (  <Center>
       <Box p='1px' mt='5rem' width={'150px'} backgroundColor={'#abc72c'}>
       <ChevronUpIcon/>
-      <Button backgroundColor={'transparent'}>BACK TO TOP</Button>
+   
+      <Button onClick={scrollToTop} backgroundColor={'transparent'}>BACK TO TOP</Button>
 
       </Box>
-      </Center>
+      </Center>) : null}
       
     </>
   );
