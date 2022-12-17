@@ -1,4 +1,5 @@
 import React from "react";
+import { AspectRatio } from 'react-aspect-ratio';
 import {
   Box,
   IconButton,
@@ -8,6 +9,7 @@ import {
   Center,
   SimpleGrid,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 
 // Here we have used react-icons package for the icons
@@ -210,6 +212,71 @@ React.useEffect(() => {
             src="https://logan.nnnow.com/content/dam/nnnow-project/16-march-2022/justlanded.jpg"
           />
         </Center>
+      <Flex width='70rem' margin={'auto'} gap='100px'>
+      <Box display={'flex'} width='35rem' >
+      <Box>
+      <Image m='auto' w='200px' src='https://cdn12.nnnow.com/web-images/medium/styles/BQ04A9UTA8Y/1669710810661/1.jpg'/>
+      <Center>
+      <Flex gap='5px'>
+        <Image src='https://cdn02.nnnow.com/web-images/master/product_tags/cb6e9f96-922e-42cb-84ae-9337178f87fa/1554297283453/Sale.png'/>
+        <Text color={'red.500'}>OFFER</Text>
+      </Flex>
+      </Center>
+<Text mt='10px' fontSize={'13px'} fontWeight={'bold'}>SEPHORA COLLECTION</Text>
+<Text fontSize={'13px'} m='auto' mt='10px' w='60%'>
+ Wishing You 5 Multi-Use Color Wand for Face, Lips & Eyes (Limited Edition)
+ </Text>
+ <Text fontWeight={'bold'}>Rs.2,300</Text>
+ <Text>2 more offers</Text>
+      </Box>
+      <Box>
+      <Image m='auto' w='200px' src='https://cdn14.nnnow.com/web-images/medium/styles/A4FLJFZGAT4/1669710810107/1.jpg'/>
+      <Center>
+      <Flex gap='5px'>
+        <Image src='https://cdn02.nnnow.com/web-images/master/product_tags/cb6e9f96-922e-42cb-84ae-9337178f87fa/1554297283453/Sale.png'/>
+        <Text color={'red.500'}>OFFER</Text>
+      </Flex>
+      </Center>
+<Text mt='10px' fontSize={'13px'} fontWeight={'bold'}>SEPHORA COLLECTION</Text>
+<Text fontSize={'13px'} m='auto' mt='10px' w='60%'>
+ Wishing You 5 Multi-Use Color Wand for Face, Lips & Eyes (Limited Edition)
+ </Text>
+ <Text fontWeight={'bold'}>Rs.2,300</Text>
+ <Text>2 more offers</Text>
+      </Box>
+      <Box>
+      <Image m='auto' w='200px' src='https://cdn02.nnnow.com/web-images/medium/styles/EGTRQW0IRTC/1669710810364/1.jpg'/>
+      <Center>
+      <Flex gap='5px'>
+        <Image src='https://cdn02.nnnow.com/web-images/master/product_tags/cb6e9f96-922e-42cb-84ae-9337178f87fa/1554297283453/Sale.png'/>
+        <Text color={'red.500'}>OFFER</Text>
+      </Flex>
+      </Center>
+<Text mt='10px' fontSize={'13px'} fontWeight={'bold'}>SEPHORA COLLECTION</Text>
+<Text  fontSize={'13px'} m='auto' w='60%' mt='10px' >
+ Wishing You 5 Multi-Use Color Wand for Face, Lips & Eyes (Limited Edition)
+ </Text>
+ <Text fontWeight={'bold'}>Rs.2,300</Text>
+ <Text>2 more offers</Text>
+      </Box>
+      </Box>
+      <Box border='solid 25px red' width='22rem' color={'white'} m='auto' bgColor={'red'}>
+     
+<AspectRatio maxW='400px' ratio={1}>
+  <Box
+    as="iframe"
+    title="naruto"
+   
+    src="https://www.youtube.com/embed/E-GhPxngXCg"
+    allowFullScreen
+  />
+</AspectRatio>
+<br/>
+Explore MoroccanOil Body
+      </Box>
+
+      </Flex>
+{/* <Text display={'flex'} mr='330px' justifyContent="flex-end">Explore MoroccanOil Body</Text> */}
       </Box>
       <Box mt="10rem">
         <Center>

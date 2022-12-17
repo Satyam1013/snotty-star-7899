@@ -14,13 +14,17 @@ import {
   Portal,
   MenuItem,
   SimpleGrid,
+  Button,
  
 } from "@chakra-ui/react";
 import Login from '../Components/Login';
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 export default function Navbar() {
-
+  const {name, handleShowLogout, showLogin} = useContext(AuthContext)
+ 
 
   return (
     <>
@@ -34,7 +38,7 @@ export default function Navbar() {
                 alt="NNNOW"
               />
             </Box>
-            <Box color="#d6d6d6" class="nw-header-seperator">
+            <Box color="#d6d6d6" >
               |
             </Box>
 
@@ -93,7 +97,7 @@ export default function Navbar() {
               />
               <Text>Get APP</Text>
             </Box>
-            <Box color="#d6d6d6" class="nw-header-seperator">
+            <Box color="#d6d6d6" >
               |
             </Box>
             <Box display="flex" alignItems={"center"} gap="10px">
@@ -103,7 +107,7 @@ export default function Navbar() {
               />
               <Text>Track Order</Text>
             </Box>
-            <Box color="#d6d6d6" class="nw-header-seperator">
+            <Box color="#d6d6d6" >
               |
             </Box>
             <Box display="flex" alignItems={"center"} gap="10px">
@@ -146,7 +150,7 @@ export default function Navbar() {
             height={"18px"}
             src="https://cdn-icons-png.flaticon.com/128/1000/1000621.png"
           />
-          <Box color="#d6d6d6" class="nw-header-seperator">
+          <Box color="#d6d6d6" >
             |
           </Box>
           <Image
@@ -155,7 +159,7 @@ export default function Navbar() {
             height={"32px"}
             src="https://cdn-icons-png.flaticon.com/128/5451/5451640.png"
           />
-          <Box color="#d6d6d6" class="nw-header-seperator">
+          <Box color="#d6d6d6" >
             |
           </Box>
           <Box cursor="pointer" display={"flex"} alignItems="center" >
@@ -165,7 +169,7 @@ export default function Navbar() {
               src="https://cdn-icons-png.flaticon.com/128/8763/8763326.png"
             />
            
-          <Login/>
+        { showLogin ? (<> <Flex alignItems={'center'} gap='20px'> {name} <Button backgroundColor={'transparent'} onClick={handleShowLogout} >Logout</Button> </Flex> </>) : <Login/> }
        
           </Box>
         </Box>

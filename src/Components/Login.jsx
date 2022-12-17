@@ -12,22 +12,112 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Select,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
+import { AuthContext } from "../Context/AuthContextProvider";
+
 
 export default function Login() {
+  const { authState, loginUser, setName, name, handleShowLogin} = useContext(AuthContext);
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  // const [ card, setCard ] = useState(false)
+ 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = useRef(null);
   const finalRef = useRef(null);
 
-  return (
-    <>
-      <Button backgroundColor={"transparent"} onClick={onOpen}>
+  return authState ?   
+      (
+        <>
+        <Button backgroundColor={"transparent"} onClick={onOpen}>
+        Login
+      </Button>
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader fontSize={"33px"} margin={"auto"} fontWeight={"bolder"}>
+            CREATE ACCOUNT
+          </ModalHeader>
+      
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel
+                letterSpacing={"1px"}
+                fontWeight={"light"}
+                fontSize={"11px"}
+              >
+               Name*
+              </FormLabel>
+              <Flex>
+              <Select width={'20%'} fontSize='11px' placeholder='Select' borderRadius={''}>
+  <option value='Mr'>Mr</option>
+  <option value='Ms'>Ms</option>
+
+</Select>
+<Input value={name} width={'80%'} borderRadius={''} onChange={(e) => setName(e.target.value)} />
+              </Flex>
+             
+            </FormControl>
+          </ModalBody>
+
+          <ModalBody>
+          <FormLabel
+                letterSpacing={"1px"}
+                fontWeight={"light"}
+                fontSize={"11px"}
+              >
+               Email*
+              </FormLabel>
+        <Input value={email} borderRadius={''} />
+        </ModalBody>
+          <br />
+     
+          <ModalBody>
+          <FormLabel
+                letterSpacing={"1px"}
+                fontWeight={"light"}
+                fontSize={"11px"}
+              >
+               Password*
+              </FormLabel>
+        <Input value={password} borderRadius={''} onChange={(e) => setPassword(e.target.value)}/>
+        </ModalBody>
+        <br/>
+        <ModalBody>
+          <FormLabel
+                letterSpacing={"1px"}
+                fontWeight={"light"}
+                fontSize={"11px"}
+              >
+            Phone Number*
+              </FormLabel>
+        <Input borderRadius={''}/>
+        </ModalBody>
+        <br/>
+        <Button colorScheme="pink" disabled={name==='' || email==='' || password===''} width="90%" borderRadius={""} m="auto" onClick={handleShowLogin}>
+            CONTINUE
+          </Button>
+          <br/>
+          <br/>
+          <br/>
+         </ModalContent>
+      </Modal>
+       </>
+      ) : ( <>
+        <Button backgroundColor={"transparent"} onClick={onOpen}>
         Login
       </Button>
       <Modal
@@ -51,10 +141,10 @@ export default function Login() {
               >
                 Enter your Phone / Email
               </FormLabel>
-              <Input borderRadius={""} border="solid 3px" ref={initialRef} />
+              <Input value={email} borderRadius={""} border="solid 3px" ref={initialRef} onChange={(e) => setEmail(e.target.value)}/>
             </FormControl>
           </ModalBody>
-          <Button colorScheme="pink" width="90%" borderRadius={""} m="auto">
+          <Button disabled={email===''} colorScheme="pink" width="90%" borderRadius={""} m="auto" onClick={loginUser}>
             CONTINUE
           </Button>
           <br />
@@ -115,6 +205,7 @@ export default function Login() {
           <br/>
         </ModalContent>
       </Modal>
-    </>
-  );
+        </>)
+ 
+  
 }
