@@ -14,10 +14,17 @@ import {
   Portal,
   MenuItem,
   SimpleGrid,
+  Button,
+ 
 } from "@chakra-ui/react";
+import Login from '../Components/Login';
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 export default function Navbar() {
-  // const { isOpen, onOpen, onClose } = useDisclosure()
+  const {name, handleShowLogout, showLogin} = useContext(AuthContext)
+ 
 
   return (
     <>
@@ -31,7 +38,7 @@ export default function Navbar() {
                 alt="NNNOW"
               />
             </Box>
-            <Box color="#d6d6d6" class="nw-header-seperator">
+            <Box color="#d6d6d6" >
               |
             </Box>
 
@@ -90,7 +97,7 @@ export default function Navbar() {
               />
               <Text>Get APP</Text>
             </Box>
-            <Box color="#d6d6d6" class="nw-header-seperator">
+            <Box color="#d6d6d6" >
               |
             </Box>
             <Box display="flex" alignItems={"center"} gap="10px">
@@ -100,7 +107,7 @@ export default function Navbar() {
               />
               <Text>Track Order</Text>
             </Box>
-            <Box color="#d6d6d6" class="nw-header-seperator">
+            <Box color="#d6d6d6" >
               |
             </Box>
             <Box display="flex" alignItems={"center"} gap="10px">
@@ -131,10 +138,11 @@ export default function Navbar() {
             width={"400px"}
           />
         </Box>
-
+<NavLink to='/'>
         <Heading fontFamily="mono" fontSize={"43px"} letterSpacing="12px">
           SEPHORA
         </Heading>
+        </NavLink>
         <Box display={"flex"} alignItems="center" gap="15px">
           <Image
             cursor="pointer"
@@ -142,7 +150,7 @@ export default function Navbar() {
             height={"18px"}
             src="https://cdn-icons-png.flaticon.com/128/1000/1000621.png"
           />
-          <Box color="#d6d6d6" class="nw-header-seperator">
+          <Box color="#d6d6d6" >
             |
           </Box>
           <Image
@@ -151,22 +159,26 @@ export default function Navbar() {
             height={"32px"}
             src="https://cdn-icons-png.flaticon.com/128/5451/5451640.png"
           />
-          <Box color="#d6d6d6" class="nw-header-seperator">
+          <Box color="#d6d6d6" >
             |
           </Box>
-          <Box cursor="pointer" display={"flex"} alignItems="center" gap="10px">
+          <Box cursor="pointer" display={"flex"} alignItems="center" >
             <Image
               width="16px"
               height={"18px"}
               src="https://cdn-icons-png.flaticon.com/128/8763/8763326.png"
             />
-            <Text>Login</Text>
+           
+        { showLogin ? (<> <Flex alignItems={'center'} gap='20px'> {name} <Button backgroundColor={'transparent'} onClick={handleShowLogout} >Logout</Button> </Flex> </>) : <Login/> }
+       
           </Box>
         </Box>
       </Box>
-      <Box display={"flex"} justifyContent="center" gap='80px' >
+      <Box display={"flex"} justifyContent="center" gap='80px' position='sticky' p='10px' top='0px' zIndex={'1'} backgroundColor={'white'}>
         <Box display={"flex"}>
+        <NavLink to='/sale'>
           <Text fontWeight={"bold"}>SALE</Text>
+          </NavLink>
         </Box>
         <Box>
           <Menu>
